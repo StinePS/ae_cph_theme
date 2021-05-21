@@ -1,0 +1,49 @@
+/* 
+Theme Name: AE Cph Theme
+Template: twentyseventeen
+Version: 1.0.3
+Description:  Twenty Seventeen Child Theme
+Author:      KEA 2. sem. Gruppe 2
+*/
+
+/* GENEREL STYLING */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* CLASSES */
+
+/* GRIDS */
+.grid-4 {
+  display: grid;
+}
+
+/* SKJULT INDHOLD & MEDIA QUERIES */
+@media (max-width: 767px) {
+  .hidden_on_mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden_on_desktop {
+    display: none;
+  }
+}
+
+/* HEADER */
+
+/* FOOTER*/
+
+/* FRONTPAGE */
+
+/* SHOP */
+
+/* GALLERI */
+
+/* GALLERI SINGLE VIEW */
+
+/* OM AE */
+
+/* KONTAKT */
