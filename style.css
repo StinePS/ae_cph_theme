@@ -88,7 +88,8 @@ body.page-two-column:not(.archive) #primary .entry-content {
 
 /* Bredde på content */
 .wrap {
-  max-width: 1300px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Styling af produkt-articles */
@@ -100,14 +101,23 @@ body.page-two-column:not(.archive) #primary .entry-content {
 }
 
 .new_article h2,
-.webshop_article h2,
+,
 .single_article h2 {
   padding: 0.5rem;
 }
 
-.new_article p,
-.webshop_article p {
+.new_article p {
   padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.webshop_h2 {
+  font-size: 1.5rem;
+  padding: 0 0.25rem 0.25rem 0.25rem;
+}
+
+.webshop_article p {
+  font-size: 0.8rem;
+  padding: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .single_article p {
@@ -129,8 +139,13 @@ article p {
   }
 
   .grid-autofit {
-    max-width: 250px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 0.5rem;
+  }
+
+  body.page-two-column:not(.archive) #primary .entry-content {
+    width: 99vw;
   }
 }
 
@@ -159,6 +174,15 @@ article p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 1.5rem;
+  }
+
+  .webshop_h2 {
+    font-size: 2rem;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+  }
+
+  .wrap {
+    max-width: 1300px;
   }
 }
 
