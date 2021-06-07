@@ -7,22 +7,130 @@ Author:      KEA 2. sem. Gruppe 2
 */
 
 /* GENEREL STYLING */
-* {
+html {
+  font-size: 1rem;
+}
+
+body {
+  letter-spacing: 0.02rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Italiana', serif;
+  color: #000;
   padding: 0;
+  margin-top: 1rem;
+  letter-spacing: 0.03rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.25rem;
   margin: 0;
+  padding: 0.5rem;
+}
+
+h4,
+p,
+a {
+  font-family: 'Open Sans', sans-serif;
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+a:hover {
+  color: #87592f;
+}
+
+a:active {
+  color: #87592f;
+}
+
+@media (min-width: 768px) {
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    padding: 1rem 0 0.5rem;
+  }
 }
 
 /* CLASSES */
 
-/* GRIDS */
-.grid-4 {
-  display: grid;
+/* Fjern side-overskrifter 'AE Copenhagen' m.v. */
+.entry-header,
+.page-header {
+  display: none;
 }
 
-/* SKJULT INDHOLD & MEDIA QUERIES */
+/* Fjern højre-stilling på content */
+body.page-two-column:not(.archive) #primary .entry-content {
+  float: none;
+  width: 100%;
+}
+
+/* Margin på blocks */
+.wp-block-columns {
+  margin: 2rem 0;
+}
+
+/* Bredde på content */
+.wrap {
+  max-width: 1300px;
+}
+
+/* Styling af produkt-articles */
+.new_article,
+.webshop_article,
+.single_article {
+  background-color: rgb(255, 255, 255, 0.5);
+  padding: 0.5rem;
+}
+
+.new_article h2,
+.webshop_article h2,
+.single_article h2 {
+  padding: 0.5rem;
+}
+
+.new_article p,
+.webshop_article p {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.single_article p {
+  padding-bottom: 0.5rem;
+}
+
+article p {
+  margin-bottom: 0;
+}
+
+/* GRIDS & SKJULT INDHOLD & MEDIA QUERIES */
+.hidden {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .hidden_on_mobile {
     display: none;
+  }
+
+  .grid-autofit {
+    max-width: 250px;
+    margin: 0 auto;
   }
 }
 
@@ -30,20 +138,372 @@ Author:      KEA 2. sem. Gruppe 2
   .hidden_on_desktop {
     display: none;
   }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .grid-autofit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1.5rem;
+  }
 }
 
 /* HEADER */
+.navigation-top {
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(209, 200, 185, 0.8);
+  bottom: unset;
+  display: flex;
+  justify-content: right;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 5rem;
+  border: none;
+}
+
+.navigation-top a {
+  font-size: 1rem;
+}
+
+.navigation-top a:hover {
+  color: #87592f;
+}
+
+.main-navigation a {
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .navigation-top {
+    justify-content: center;
+  }
+
+  .main-navigation a {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Logo */
+#header-logo {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+#home-button {
+  position: absolute;
+  left: 1rem;
+  top: 0.3rem;
+}
+
+/* Styling af burgermenu-knap */
+#burgermenu {
+  position: absolute;
+  left: 9.5rem;
+  margin-top: 1rem;
+}
+
+.burgerlogo {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.main-navigation > div > ul {
+  border-top: none;
+}
+
+/*.main-navigation ul {
+  background: #d1c8b9;
+} */
+
+/* Styling af søgefelt */
+#searchbar {
+  width: 12rem;
+  opacity: 0.8;
+}
+
+#searchbar input {
+  background: transparent;
+  border: 1px solid #000;
+}
+
+/* Styling af søgeknap */
+:not(.mejs-button) > button:hover,
+:not(.mejs-button) > button:focus,
+input[type='button']:hover,
+input[type='button']:focus,
+input[type='submit']:hover,
+input[type='submit']:focus {
+  background-color: #87592f;
+}
+
+/* Fjern markering af "current page" fra nav */
+.navigation-top .current-menu-item > a,
+.navigation-top .current_page_item > a {
+  color: #000;
+}
+
+.navigation-top .current-menu-item > a:hover,
+.navigation-top .current_page_item > a:hover {
+  color: #87592f;
+}
+
+/* Forside-splash op bagved header */
+.panel-content .wrap {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.site-content {
+  padding-top: 0;
+}
 
 /* FOOTER*/
+footer {
+  background-color: #d1c8b9;
+  /* #d1c8b9; */
+  margin-top: -0.5rem;
+}
+
+#menu-some-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 1rem;
+  padding-top: 0.7rem;
+}
+
+.footer-punkter p {
+  margin: 0;
+}
+
+.footer-punkter {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-top: 0.7rem;
+}
+
+footer a,
+footer p {
+  font-weight: 600;
+}
+
+/* Styling af SoMe-ikoner i footer */
+.social_navigation {
+  display: grid;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.social-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  color: #000;
+}
+
+.social-links-menu li a:hover {
+  color: #87592f;
+}
+
+@media (min-width: 768px) {
+  footer {
+    margin-top: 0;
+  }
+
+  .footer-logo {
+    justify-content: left;
+    padding-top: 0;
+  }
+
+  .footer-punkter,
+  .social_navigation {
+    padding-top: 0;
+  }
+
+  #menu-some-menu {
+    justify-content: end;
+  }
+}
 
 /* FRONTPAGE */
+/* Fjern hvid boxshadow */
+.entry-content a img,
+.comment-content a img,
+.widget a img {
+  box-shadow: none;
+}
+
+/* Styling af "Nyeste produkter */
+#new-products {
+  padding-top: 1rem;
+}
+
+.img_contain {
+  padding-bottom: 125%;
+  position: relative;
+  background: #fff;
+}
+
+.img_contain img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: contain;
+}
+
+/* Fjern border i toppen af Nyeste-artikler */
+.twentyseventeen-front-page article:not(.has-post-thumbnail):not(:first-child) {
+  border-top: none;
+}
+
+/* Styling af Instagram-fotos */
+.sbi_photo a {
+  box-shadow: none;
+}
+
+.entry-content a {
+  color: none;
+  box-shadow: none;
+}
+
+.entry-content a:hover {
+  color: none;
+  box-shadow: none;
+}
+
+#sbi_load {
+  margin: 0.5rem 0;
+}
+
+/* Styling af Instagram-knap */
+#sb_instagram .sbi_follow_btn a {
+  font-size: 1.1rem;
+  background: #3f4b4f;
+  background-color: #3f4b4f;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+#sb_instagram .sbi_follow_btn a:visited {
+  background-color: #3f4b4f;
+  color: #fff;
+}
+
+#sb_instagram .sbi_follow_btn a:hover {
+  outline: 0;
+  color: #fff;
+  box-shadow: inset 0 0 10px 30px #87592f;
+}
 
 /* SHOP */
 
-/* GALLERI */
+/* SHOP SINGLE VIEW */
+/* Grøn baggrundsfarve på side */
+#single_background {
+  background-color: #b9c1b6;
+}
 
-/* GALLERI SINGLE VIEW */
+/* Styling af single view */
+.single_wrap {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+
+.single_article {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.category {
+  margin-bottom: 3rem;
+}
+
+.button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  background: #3f4b4f;
+  background-color: #3f4b4f;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.button:visited {
+  background-color: #3f4b4f;
+  color: #fff;
+}
+
+.button:hover {
+  outline: 0;
+  color: #fff;
+  box-shadow: inset 0 0 10px 30px #87592f;
+}
+
+/* GALLERI */
+#gallery-toptext {
+  font-size: 1.3rem;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+#gallery-toptext :first-child p {
+  margin-bottom: 1rem;
+}
 
 /* OM AE */
 
 /* KONTAKT */
+/* Bredde på kolonner */
+.wp-block-columns {
+  margin: 2rem auto;
+  max-width: 80ch;
+}
+
+/* Styling af Send-knap */
+input[type='submit'] {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  background: #3f4b4f;
+  background-color: #3f4b4f;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+input[type='submit']:visited {
+  background-color: #3f4b4f;
+  color: #fff;
+}
+
+input[type='submit']:hover {
+  outline: 0;
+  color: #fff;
+  box-shadow: inset 0 0 10px 30px #87592f;
+}

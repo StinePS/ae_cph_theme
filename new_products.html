@@ -1,0 +1,44 @@
+<template class="new_temp">
+  <article class="new_article">
+    <a href="">
+      <div class="img_contain">
+        <img class="new_img" src="" alt="Nyeste produkter" width="" height="" />
+      </div>
+      <h4 class="new_h4"></h4>
+      <p class="short_descrip"></p>
+    </a>
+  </article>
+</template>
+
+<script>
+  // Variabler
+  let newPro
+  let newTemp = document.querySelector('.new_temp')
+
+  //Konstanter til rest API
+  const urlNew = '/kea/10_eksamen/ae_cph/wp-json/wp/v2/produkter?per_page=4'
+
+  //Henter data fra rest API og kalder funktion
+  async function getJson() {
+    const newData = await fetch(urlNew)
+    newPro = await newData.json()
+
+    showNew()
+  }
+
+  function showNew() {
+    console.log('showNew(sort)')
+    newPro.forEach((pro) => {
+      let clone = newTemp.cloneNode(true).content
+      clone.querySelector('.new_img').src = pro.billeder[0].guid
+      clone.querySelector('.new_h4').innerHTML = pro.navn
+      clone.querySelector('.short_descrip').innerHTML =
+        pro.trae + ' / ' + pro.metal
+      clone.querySelector('a').href = pro.link
+
+      document.querySelector('#new-products').appendChild(clone)
+    })
+  }
+
+  getJson()
+</script>

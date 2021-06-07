@@ -1,0 +1,72 @@
+<template class="webshop_temp">
+    <article class="webshop_article">
+        <a href="">
+            <div class="img_contain">
+        <img class="webshop_img" src="" alt="Alle AE produkter">
+    </div>
+            <h2 class="webshop_h2"></h2>
+            <p class="webshop_short"></p>
+            <p class="price"></p>
+        </a>
+    </article>
+</template>
+
+</main><!-- #main -->
+
+<script>
+//Variabler og konstanter
+let produkter;
+const dbUrl = "/kea/10_eksamen/ae_cph/wp-json/wp/v2/produkter?per_page=100";
+
+//Variabler og konstanter til de enkelte sektioner
+let webshopTemp = document.querySelector(".webshop_temp");
+const allCont = document.querySelector("#all-products");
+
+//Hent data fra rest api og kald funktioner
+async function getJson() {
+const data = await fetch(dbUrl);
+produkter = await data.json();
+
+sortAll();
+}
+
+//Sortér produkter alfabetisk a-å
+function sortAll() {
+console.log("sortAll");
+const sort = produkter.sort((a, b) => {
+let fa = a.title.rendered.toLowerCase(),
+    fb = b.title.rendered.toLowerCase();
+
+if (fa < fb) {
+    return -1;
+}
+if (fa > fb) {
+    return 1;
+}
+return 0;
+});
+
+//Kalder showAll med den sorterede variabel
+showAll(sort);
+}
+
+//Sortér alfabetisk med (sort), klon "all" articles og tilføj link til produkt
+function showAll(sort) {
+console.log("produkter", produkter)
+produkter.forEach(produkt => {
+    if (produkt.kategori) {
+        let clone = webshopTemp.cloneNode(true).content;
+        clone.querySelector(".webshop_img").src = produkt.billeder[0].guid;
+        clone.querySelector(".webshop_h2").innerHTML = produkt.navn;
+        clone.querySelector(".webshop_short").innerHTML =
+        produkt.trae + ' / ' + produkt.metal
+        clone.querySelector(".price").innerHTML = "Kr. " + produkt.pris;
+        clone.querySelector('a').href = produkt.link;
+        allCont.appendChild(clone);
+    }
+    })
+}
+
+getJson();
+
+</script>
