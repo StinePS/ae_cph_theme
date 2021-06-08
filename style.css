@@ -90,6 +90,12 @@ body.page-two-column:not(.archive) #primary .entry-content {
 .wrap {
   padding-left: 0;
   padding-right: 0;
+  width: 100%;
+}
+
+/* Fjern hvid kant nedert på sider */
+.page:not(.home) #content {
+  padding-bottom: 0;
 }
 
 /* Styling af produkt-articles */
@@ -100,8 +106,12 @@ body.page-two-column:not(.archive) #primary .entry-content {
   padding: 0.5rem;
 }
 
+.new_article {
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
 .new_article h2,
-,
 .single_article h2 {
   padding: 0.5rem;
 }
@@ -176,13 +186,23 @@ article p {
     grid-gap: 1.5rem;
   }
 
+  .grid-text {
+    margin-top: 4rem;
+  }
+
   .webshop_h2 {
     font-size: 2rem;
     padding: 0 0.5rem 0.5rem 0.5rem;
   }
 
+  .webshop_article p {
+    font-size: 1rem;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+  }
+
   .wrap {
     max-width: 1300px;
+    width: auto;
   }
 }
 
@@ -213,16 +233,6 @@ article p {
   padding-top: 1rem;
 }
 
-@media (min-width: 768px) {
-  .navigation-top {
-    justify-content: center;
-  }
-
-  .main-navigation a {
-    padding: 1rem 1.5rem;
-  }
-}
-
 /* Logo */
 #header-logo {
   width: 4.5rem;
@@ -231,15 +241,22 @@ article p {
 
 #home-button {
   position: absolute;
-  left: 1rem;
+  left: 1.5rem;
   top: 0.3rem;
+  z-index: 1;
 }
 
 /* Styling af burgermenu-knap */
 #burgermenu {
   position: absolute;
-  left: 9.5rem;
+  right: 1rem;
   margin-top: 1rem;
+  z-index: 1;
+}
+
+#burgermenu:hover,
+#burgermenu:focus {
+  background: transparent;
 }
 
 .burgerlogo {
@@ -247,13 +264,19 @@ article p {
   height: 1.7rem;
 }
 
+.nav-menu {
+  position: absolute;
+  top: 5rem;
+  width: 100%;
+}
+
+.main-navigation ul {
+  background: rgb(209, 200, 185, 0.8);
+}
+
 .main-navigation > div > ul {
   border-top: none;
 }
-
-/*.main-navigation ul {
-  background: #d1c8b9;
-} */
 
 /* Styling af søgefelt */
 #searchbar {
@@ -297,10 +320,28 @@ input[type='submit']:focus {
   padding-top: 0;
 }
 
+@media (min-width: 768px) {
+  .navigation-top {
+    justify-content: center;
+  }
+
+  .main-navigation a {
+    padding: 1rem 1.5rem;
+  }
+
+  .main-navigation ul {
+    background-color: transparent;
+  }
+
+  .nav-menu {
+    position: relative;
+    top: 0;
+  }
+}
+
 /* FOOTER*/
 footer {
   background-color: #d1c8b9;
-  /* #d1c8b9; */
   margin-top: -0.5rem;
 }
 
@@ -314,7 +355,7 @@ footer {
 .footer-logo {
   display: flex;
   justify-content: center;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 1.5rem;
   padding-top: 0.7rem;
 }
 
@@ -345,7 +386,7 @@ footer p {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1rem;
-  color: #000;
+  fill: currentColor;
 }
 
 .social-links-menu li a:hover {
@@ -416,6 +457,7 @@ footer p {
 .entry-content a:hover {
   color: none;
   box-shadow: none;
+  text-decoration: underline;
 }
 
 #sbi_load {
@@ -445,6 +487,49 @@ footer p {
 }
 
 /* SHOP */
+/* Styling af filtreringsknapper */
+#filter_nav button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  border-radius: 0.4rem;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+  background-color: #3f4b4f;
+  color: #fff;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  float: left;
+  display: block;
+  text-decoration: none;
+}
+
+/* Baggrundsfarve på knapper ved hover */
+#filter_nav button:hover {
+  background-color: #87592f;
+}
+
+/* Indhold i sub_nav */
+.sub_nav_content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  display: none;
+}
+
+/* Vis filtreringsknapper ved hover */
+.sub_nav button:hover + .sub_nav_content {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.sub_nav:hover .sub_nav_content {
+  display: block;
+}
 
 /* SHOP SINGLE VIEW */
 /* Grøn baggrundsfarve på side */
@@ -460,11 +545,12 @@ footer p {
 
 .single_article {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 1rem;
 }
 
-.category {
-  margin-bottom: 3rem;
+.category,
+.descrip {
+  margin-bottom: 1.5rem;
 }
 
 .button {
@@ -501,6 +587,9 @@ footer p {
 }
 
 /* OM AE */
+#om-text p {
+  margin-bottom: 1rem;
+}
 
 /* KONTAKT */
 /* Bredde på kolonner */
@@ -530,4 +619,10 @@ input[type='submit']:hover {
   outline: 0;
   color: #fff;
   box-shadow: inset 0 0 10px 30px #87592f;
+}
+
+/* HANDELSBETINGELSER */
+
+#handel_h2 {
+  margin-top: 6rem;
 }
