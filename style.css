@@ -68,7 +68,6 @@ a:active {
 }
 
 /* CLASSES */
-
 /* Fjern side-overskrifter 'AE Copenhagen' m.v. */
 .entry-header,
 .page-header {
@@ -487,49 +486,6 @@ footer p {
 }
 
 /* SHOP */
-/* Styling af filtreringsknapper */
-#filter_nav button {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
-  border-radius: 0.4rem;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
-  background-color: #3f4b4f;
-  color: #fff;
-  padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  float: left;
-  display: block;
-  text-decoration: none;
-}
-
-/* Baggrundsfarve på knapper ved hover */
-#filter_nav button:hover {
-  background-color: #87592f;
-}
-
-/* Indhold i sub_nav */
-.sub_nav_content {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  left: 0;
-  display: none;
-}
-
-/* Vis filtreringsknapper ved hover */
-.sub_nav button:hover + .sub_nav_content {
-  visibility: visible;
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-}
-
-.sub_nav:hover .sub_nav_content {
-  display: block;
-}
 
 /* SHOP SINGLE VIEW */
 /* Grøn baggrundsfarve på side */
